@@ -1,0 +1,9 @@
+setting.json
+setting_once.json
+
+__pycache__/
+*.py[cod]
+
+.venv/
+
+video/
