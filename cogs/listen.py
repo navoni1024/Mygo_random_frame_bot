@@ -18,5 +18,5 @@ class listen(Cog_Extension):
             select_random_frame(vid, temp_file[1])
             await message.channel.send(file=discord.File(temp_file[1]))
 
-def setup(bot):
-	bot.add_cog(listen(bot))
+async def setup(bot):
+	await bot.add_cog(listen(bot))
