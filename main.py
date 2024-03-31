@@ -21,7 +21,7 @@ asyncio.run(load_extensions())
 
 @bot.event
 async def on_ready():
-	print('Nande Haruhikage yadaso')
+	print('なんで春日影やったの！？')
 
 if __name__ == "__main__":
 	bot.run(jdata['token'])
