@@ -14,7 +14,7 @@ class listen(Cog_Extension):
     async def on_message(self, message):
         if(message.author.bot): return
         if('<@'+str(self.bot.user.id)+'>' == message.content):			
-            vid = random_file('./video')
+            vid = random_file(jdata["video_path"])
             temp_file = tempfile.mkstemp(suffix=".png")
             random_frame(vid, temp_file[1])
             await message.channel.send(file=discord.File(temp_file[1]))

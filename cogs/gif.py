@@ -15,7 +15,7 @@ class gif(Cog_Extension):
         if(duration > jdata['gif_duration_limit']):
             await message.channel.send("The requested GIF length is too long")
             return
-        vid = random_file('./video')
+        vid = random_file(jdata["video_path"])
         temp_file = tempfile.mkstemp(suffix=".gif")
         random_gif(vid, temp_file[1], duration)
         await message.channel.send(file=discord.File(temp_file[1]))
