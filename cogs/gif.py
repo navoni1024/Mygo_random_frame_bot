@@ -12,6 +12,9 @@ with open('setting.json','r',encoding='utf8') as jfile:
 class gif(Cog_Extension):	
     @commands.command(aliases=['!!!!!', 'G', 'g'])
     async def gif(self, message, duration=3.0):
+        if(duration <= 0):
+            await message.channel.send("The requested GIF length is invalid")
+            return
         if(duration > jdata['gif_duration_limit']):
             await message.channel.send("The requested GIF length is too long")
             return
