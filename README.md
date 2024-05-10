@@ -3,9 +3,10 @@
 可以隨機輸出影片一幀/一段gif的discord機器人。
 任意影片都行，不過原始目的是隨機Mygo就是
 
+
 ## 使用
-    示範用機器人(因為是架在自家電腦上的，可能會出圖慢或甚至不時斷線):
-    ![邀請連結](https://discord.com/oauth2/authorize?client_id=988015342603370556&permissions=274877942912&scope=bot)
+
+示範用機器人(因為是架在自家電腦上的，可能會出圖慢或甚至不時斷線):[邀請連結](<https://discord.com/oauth2/authorize?client_id=988015342603370556&permissions=274877942912&scope=bot>)
 
   - @買夠
 
