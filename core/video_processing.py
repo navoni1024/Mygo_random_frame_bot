@@ -26,8 +26,8 @@ def random_time(timeStr, delta):
 
 #ffprobe -i .\video\Mygo04.mp4 -show_entries format=duration -v quiet -of csv="p=0" -sexagesimal 
 def get_video_duration(video_path):
-    probe = ffmpeg.probe(video_path, cmd='ffprobe', v='error', sexagesimal=None , show_entries='format=duration')
-    return probe["streams"][0]["duration"]
+    probe = ffmpeg.probe(video_path, cmd='ffprobe', v='error', sexagesimal=None, show_entries='format=duration')
+    return probe['format']['duration']
 
 def random_frame(video_path, output_file):
     (
