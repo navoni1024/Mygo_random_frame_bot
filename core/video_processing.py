@@ -40,15 +40,27 @@ def random_frame(video_path, output_file):
 # duration count in second
 def random_gif(video_path, output_file, duration=3):
     tmpDir = tempfile.TemporaryDirectory()
+    
     (
     ffmpeg
     .input(video_path, ss=random_time(get_video_duration(video_path), 5000+int(duration*25*100000)), hide_banner=None, loglevel='error')
-    .output(os.path.join(tmpDir.name,"output.mp4"), t=duration, an=None, y=None)
+    .output(os.path.join(tmpDir.name,"output.mp4"), vf="fps=25,scale=448:-1:flags=lanczos", t=duration, an=None, y=None)
     .run()
     )
-    
+
     (
-    ffmpeg.input(os.path.join(tmpDir.name,"output.mp4"), hide_banner=None, loglevel='error')
-    .output(output_file, vf="fps=25,scale=500:-1:flags=lanczos", c="gif", y=None)
+    ffmpeg
+    .input(os.path.join(tmpDir.name,"output.mp4"))
+    .output(os.path.join(tmpDir.name,"palette.png"),hide_banner=None, loglevel='error', vf="palettegen", update=True, y=None)
     .run()
+    )
+
+    inV = ffmpeg.input(os.path.join(tmpDir.name,"output.mp4"))
+    inP = ffmpeg.input(os.path.join(tmpDir.name,"palette.png"))
+    (
+        ffmpeg
+        .filter([inV, inP], "paletteuse")
+        .output(output_file, hide_banner=None, loglevel='error')
+        .overwrite_output()
+        .run()
     )

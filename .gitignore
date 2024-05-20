@@ -1,5 +1,6 @@
 setting.json
 setting_test.json
+setting_.json
 
 __pycache__/
 *.py[cod]

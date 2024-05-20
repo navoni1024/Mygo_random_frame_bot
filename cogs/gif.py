@@ -18,13 +18,15 @@ class gif(Cog_Extension):
         if(duration > jdata['gif_duration_limit']):
             await message.channel.send("The requested GIF length is too long")
             return
+        
+        hint = await message.channel.send("generating...")
         vid = random_file(jdata["video_path"])
         temp_file = tempfile.mkstemp(suffix=".gif")
         random_gif(vid, temp_file[1], duration)
         await message.channel.send(file=discord.File(temp_file[1]))
         os.close(temp_file[0])
         os.unlink(temp_file[1])
-        
+        await hint.delete()        
         
 async def setup(bot):
 	await bot.add_cog(gif(bot))
